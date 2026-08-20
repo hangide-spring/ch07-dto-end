@@ -14,7 +14,9 @@ public class BoardService {
     private final BoardRepository boardRepository;
 
     public List<BoardResponse> findAll() {
-        return boardRepository.findAll().stream().map(BoardResponse::from).toList();
+        return boardRepository.findAll().stream()
+                .map(board -> BoardResponse.from(board))
+                .toList();
     }
 
     public BoardResponse findById(Integer id) {
@@ -43,7 +45,6 @@ public class BoardService {
     private Board getBoard(Integer id) {
         Board board = boardRepository.findById(id);
         if (board == null) {
-            // 상태코드별 실패 응답 정리는 9차시에서 — 지금은 전부 RuntimeException(500)으로 던져 둔다
             throw new RuntimeException("게시글을 찾을 수 없습니다 : " + id);
         }
         return board;

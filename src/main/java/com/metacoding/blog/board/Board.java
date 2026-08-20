@@ -14,7 +14,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-// 6차시에 역직렬화용으로 임시로 열었던 @Setter는 record DTO가 그 역할을 가져가면서 삭제됐다 — 엔티티가 다시 닫혔다
 @NoArgsConstructor // JPA(하이버네이트)가 리플렉션으로 객체를 만들 때 기본 생성자가 필요하다
 @Getter
 @Table(name = "board_tb") // 이 클래스가 매핑될 테이블 이름
